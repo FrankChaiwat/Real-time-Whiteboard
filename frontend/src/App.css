@@ -1,0 +1,281 @@
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+      scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+      scale(0.8);
+  }
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
+
+/* Canvas interaction and history controls */
+.app-shell canvas {
+  touch-action: none;
+  user-select: none;
+}
+
+.app-shell button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.room-lobby {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: radial-gradient(circle at 50% 0%, #ffffff 0, #f6f7fb 55%, #eceefa 100%);
+}
+
+.room-card {
+  width: min(100%, 460px);
+  padding: 42px;
+  text-align: center;
+  background: rgba(255, 255, 255, .9);
+  border: 1px solid #e7eaf0;
+  border-radius: 24px;
+  box-shadow: 0 24px 70px rgba(33, 41, 63, .13);
+}
+
+.room-card .brand-mark { margin: 0 auto 18px; }
+.room-card h1 { margin: 6px 0 8px; color: #172033; font-size: 32px; font-weight: 800; letter-spacing: -1px; }
+.lobby-subtitle, .lobby-note { color: #7b8497; font-size: 14px; }
+.room-tabs { display: flex; gap: 5px; margin: 28px 0 20px; padding: 4px; background: #f0f1f6; border-radius: 11px; }
+.room-tabs button { flex: 1; border: 0; padding: 10px; border-radius: 8px; background: transparent; color: #7b8497; cursor: pointer; font-weight: 700; }
+.room-tabs button.active { color: #5f43dc; background: white; box-shadow: 0 3px 10px rgba(33, 41, 63, .08); }
+.room-form { display: grid; gap: 14px; text-align: left; border: 0 !important; padding: 0 !important; }
+.room-form label { display: grid; gap: 6px; color: #172033; font-size: 13px; font-weight: 700; }
+.room-form label span { color: #9aa1b0; font-weight: 400; }
+.room-form input { width: 100%; padding: 12px 13px; border: 1px solid #e0e3eb; border-radius: 10px; outline: none; font: inherit; }
+.room-form input:focus { border-color: #7657f5; box-shadow: 0 0 0 4px #eeeaff; }
+.room-submit { margin-top: 4px; padding: 13px; border: 0; border-radius: 10px; background: #7657f5; color: white; cursor: pointer; font-weight: 800; }
+.room-submit:hover { background: #5f43dc; }
+.room-error { margin: 0; padding: 10px 12px; border-radius: 9px; background: #fff0f0; color: #c94e5d; font-size: 13px; }
+.leave-room-button { margin-left: 10px; padding: 5px 9px; border: 1px solid #dcd5ff; border-radius: 7px; background: #fff; color: #5f43dc; cursor: pointer; font-size: 12px; font-weight: 700; }
+.leave-room-button:hover { background: #f5f2ff; }
+.room-id-display { display: block; margin-top: 4px; }
+.copy-room-button { margin-left: 6px; padding: 3px 7px; border: 1px solid #dcd5ff; border-radius: 6px; background: #fff; color: #5f43dc; cursor: pointer; font-size: 11px; }
+.copy-room-button:hover { background: #f5f2ff; }
+
+@media (max-width: 520px) {
+  .room-card { padding: 30px 22px; }
+}
+
+/* Final visual polish */
+.app-shell { padding: 48px clamp(16px, 4vw, 64px) !important; }
+.app-shell > div { max-width: 1240px !important; }
+.app-shell h2 { font-size: clamp(26px, 3.5vw, 38px) !important; letter-spacing: -1.4px !important; }
+.app-shell > div > div:first-child { margin-bottom: 28px !important; }
+.app-shell > div > div:first-child > div:first-child { position: relative; padding-left: 18px; }
+.app-shell > div > div:first-child > div:first-child::before { content: ''; position: absolute; left: 0; top: 4px; bottom: 4px; width: 4px; border-radius: 999px; background: linear-gradient(#7657f5, #a991ff); }
+.app-shell > div > div:first-child > div:last-child { display: flex; align-items: center; gap: 3px; }
+.leave-room-button { margin-left: 12px !important; background: rgba(255,255,255,.72) !important; }
+.app-shell > div > div:nth-child(2) { min-height: 64px; padding: 12px 14px !important; }
+.app-shell > div > div:nth-child(2) > div:first-child button { min-width: 96px; font-weight: 700; }
+.app-shell > div > div:nth-child(2) > div:first-child button:hover { background: #f3f1ff !important; color: #5f43dc !important; }
+.app-shell > div > div:nth-child(2) label { padding: 0 7px; }
+.app-shell canvas { background-color: #fff !important; background-image: linear-gradient(#f4f5f8 1px, transparent 1px), linear-gradient(90deg, #f4f5f8 1px, transparent 1px) !important; background-size: 24px 24px !important; }
+.app-shell > div > div:nth-child(3) > div:last-child { min-height: 520px; }
+.app-shell > div > div:nth-child(3) > div:last-child > div:first-child { position: relative; background: linear-gradient(135deg, #fff, #faf9ff) !important; }
+.app-shell > div > div:nth-child(3) > div:last-child > div:first-child::after { content: ''; position: absolute; right: 16px; top: 22px; width: 7px; height: 7px; border-radius: 50%; background: #53c98c; box-shadow: 0 0 0 4px #e4f8ed; }
+
+.room-lobby { position: relative; overflow: hidden; }
+.room-lobby::before, .room-lobby::after { content: ''; position: absolute; border-radius: 50%; filter: blur(2px); pointer-events: none; }
+.room-lobby::before { width: 360px; height: 360px; top: -120px; left: -100px; background: rgba(118,87,245,.12); }
+.room-lobby::after { width: 420px; height: 420px; right: -160px; bottom: -180px; background: rgba(109,191,255,.12); }
+.room-card { position: relative; z-index: 1; backdrop-filter: blur(18px); }
+.room-card .brand-mark { width: 54px; height: 54px; display: grid; place-items: center; border-radius: 18px; color: white; background: linear-gradient(135deg, #7657f5, #9a7dff); box-shadow: 0 12px 24px rgba(118,87,245,.28); font-size: 25px; }
+.room-submit { box-shadow: 0 10px 18px rgba(118,87,245,.23); }
+.shape-tools { display: flex; gap: 4px; padding: 3px; border: 1px solid #e7eaf0; border-radius: 9px; background: #f8f8fb; }
+.shape-tool { width: 31px; height: 31px; padding: 0 !important; border: 0 !important; border-radius: 7px !important; background: transparent !important; color: #7b8497; cursor: pointer; font-weight: 800; }
+.shape-tool:hover, .shape-tool.active { background: #edeaff !important; color: #5f43dc !important; }
+.participants-strip { display: flex; align-items: center; gap: 8px; padding: 9px 12px; border-bottom: 1px solid #e7eaf0; background: #fcfcfe; }
+.participants-label { flex: 0 0 auto; color: #9aa1b0; font-size: 11px; font-weight: 700; }
+.participant-list { display: flex; flex-wrap: wrap; gap: 4px; min-width: 0; }
+.participant-chip { max-width: 100px; overflow: hidden; padding: 3px 7px; border-radius: 999px; background: #edeaff; color: #5f43dc; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.clear-confirm-overlay { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 20px; background: rgba(23,32,51,.35); backdrop-filter: blur(5px); }
+.clear-confirm-card { width: min(100%, 390px); padding: 28px; border: 1px solid #eee7d6; border-radius: 20px; background: #fff; box-shadow: 0 25px 70px rgba(23,32,51,.2); text-align: center; }
+.clear-confirm-icon { display: grid; place-items: center; width: 48px; height: 48px; margin: 0 auto 13px; border-radius: 50%; background: #fff4dc; color: #d79022; font-size: 24px; }
+.clear-confirm-card h3 { margin: 0 0 8px; color: #172033; font-size: 20px; }
+.clear-confirm-card p { margin: 0 0 12px; color: #7b8497; font-size: 13px; line-height: 1.6; }
+.clear-progress { color: #7657f5 !important; font-weight: 800; }
+.clear-confirm-actions { display: flex; gap: 9px; margin-top: 18px; }
+.clear-confirm-actions button { flex: 1; padding: 11px 9px; border-radius: 9px; cursor: pointer; font-weight: 800; }
+.clear-cancel-button { border: 1px solid #e2e5ed; background: #fff; color: #7b8497; }
+.clear-approve-button { border: 0; background: #d85b69; color: white; }
